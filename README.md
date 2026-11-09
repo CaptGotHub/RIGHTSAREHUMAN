@@ -1,2 +1,5 @@
-# RIGHTSAREHUMAN
-RIGHTS ARE HUMAN Robots are not - SEEMS UPSURD and RIDICULOUS  BUT THERE ARE SOME THAT SE LITTLE DIFERENCE
+# Copyrights for Humans
+
+https://rightsforhumansnotrobots.org
+
+Copyrights Are PersonHood the value in Humans Intrinsc SouL ROBOTS Are Cloned
