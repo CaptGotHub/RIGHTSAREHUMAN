@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Proclamation of Copyrights for Humans · Rights for Humans, Not Robots</title>
+  <meta name="description" content="A public proclamation: copyright exists to protect human creators. Add your name to the Proclamation.">
+  <link rel="canonical" href="https://rightsforhumansnotrobots.org/">
+  <meta property="og:title" content="Copyrights for Humans — Sign the Proclamation">
+  <meta property="og:description" content="A public proclamation in support of human creators and human authorship.">
+  <meta property="og:url" content="https://rightsforhumansnotrobots.org/">
+  <meta name="theme-color" content="#2a2118">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<main class="scroll">
+  <p class="eyebrow">Rights for Humans, Not Robots · A Public Proclamation</p>
+  <h1>Copyrights for Humans</h1>
+  <p class="sub">Being a Declaration that Copyright Belongs to Human Creators, and Not to the Robots</p>
+  <div class="rule" aria-hidden="true">❦</div>
+
+  <section class="preamble" aria-label="The Proclamation">
+    <p class="dropcap">Whereas every song, story, photograph, painting and line of code worth protecting began as a spark in a human mind; and whereas machines now produce words and pictures by the billion, at no cost and without rest; and whereas the purpose of copyright has always been to reward and encourage people who create;</p>
+    <p>We, the undersigned humans, do hereby proclaim:</p>
+    <ol class="articles">
+      <li><strong>Copyright is a human right.</strong> It exists to protect the work of human creators, and should remain in the hands of the people.</li>
+      <li><strong>Tools are not authors.</strong> A brush, a camera, a guitar or a computer program may help make a work, but the credit and the rights belong to the person who made it.</li>
+      <li><strong>Creators deserve a say.</strong> People should know when their work is used to train machines, and have a voice in how it is used.</li>
+      <li><strong>Humans first, always.</strong> As technology changes, the law should change with it, but never at the expense of the people who make culture.</li>
+    </ol>
+  </section>
+
+  <div class="rule" aria-hidden="true">❦</div>
+
+  <form id="proclamation" novalidate>
+    <div id="form-body">
+      <h2>Add Your Name</h2>
+      <p class="h2sub">First, tell us where you stand. Every point on the spectrum counts.</p>
+      <div class="spectrum" role="radiogroup" aria-label="Where do you stand?">
+        <div class="spectrum-bar"><span>◀ Strictly human</span><span>Open to new ideas ▶</span></div>
+        <label class="choice">
+          <input type="radio" name="stance" value="fully-human" required>
+          <span class="card"><span class="tick" aria-hidden="true">✓</span><span><span class="pos">Position I</span><span class="choice-title">Fully Human</span><span class="desc">Copyright belongs to humans alone. Anything made by a machine belongs to no one and to everyone.</span></span></span>
+        </label>
+        <label class="choice">
+          <input type="radio" name="stance" value="human-at-the-helm">
+          <span class="card"><span class="tick" aria-hidden="true">✓</span><span><span class="pos">Position II</span><span class="choice-title">Human at the Helm</span><span class="desc">AI can be a tool, like a camera or a synthesizer, but only real human creativity earns copyright.</span></span></span>
+        </label>
+        <label class="choice">
+          <input type="radio" name="stance" value="people-first">
+          <span class="card"><span class="tick" aria-hidden="true">✓</span><span><span class="pos">Position III</span><span class="choice-title">People First, Open Mind</span><span class="desc">The rules may need to evolve, and I'm open to new ideas, as long as people come first.</span></span></span>
+        </label>
+      </div>
+
+      <div class="fields">
+        <div class="field"><label for="name">Your Name</label><input id="name" name="name" type="text" autocomplete="name" placeholder="As you'd sign it" required></div>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+        <div class="field full"><label for="location">City / Country <span class="optional">(optional)</span></label><input id="location" name="location" type="text" autocomplete="address-level2" placeholder="Where are you signing from?"></div>
+      </div>
+
+      <div class="hp" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+
+      <div class="checks">
+        <label class="check"><input type="checkbox" name="agree" id="agree"><span class="box" aria-hidden="true">✓</span><span>I have read this Proclamation and add my name to it.</span></label>
+        <label class="check"><input type="checkbox" name="human" id="human"><span class="box" aria-hidden="true">✓</span><span>I solemnly swear that I, myself, am not a robot.<small>Robots: we're on the honor system here. Please don't make this awkward.</small></span></label>
+        <label class="check"><input type="checkbox" name="confirmation_only" id="confirmation_only"><span class="box" aria-hidden="true">✓</span><span>Send me <em>only</em> my confirmation email and Certificate of Humanity. No other emails, ever.<small>Leave unchecked to get the occasional update on the movement.</small></span></label>
+      </div>
+
+      <p class="setup-note" id="setup-note">Signature collection is being prepared. This form is not yet accepting or storing signatures.</p>
+      <p class="error" id="error" role="alert" aria-live="polite"></p>
+      <div class="sign-wrap"><button class="sign" type="submit" id="signBtn">Sign the<br>Proclamation<span>✦ SEAL IT ✦</span></button></div>
+      <div class="outcome"><strong>What happens when you sign:</strong> once signature collection is connected, your name will join the Proclamation and you will receive a confirmation email and Certificate of Humanity. Confirmed signatures can become part of a public record shared with lawmakers and the creative community. Your email should never be displayed publicly.</div>
+    </div>
+
+    <div class="success" id="success" aria-live="polite">
+      <div class="stamp">Verified Human</div>
+      <p><strong id="thanksName">Thank you</strong>, your name is on the Proclamation.</p>
+      <p>Check your inbox for your <em>Certificate of Humanity</em>.</p>
+      <div class="share"><button type="button" id="copyLink">Copy link to share</button><button type="button" id="shareBtn">Share</button></div>
+    </div>
+  </form>
+
+  <div class="signed-by">
+    <div class="sig"><div class="name">Nick Laudani</div><div class="role">Author of the Proclamation</div></div>
+    <p class="abstain">In the interest of full disclosure: this Proclamation was drafted with the help of an AI, which has respectfully abstained from signing.</p>
+  </div>
+</main>
+<footer><p>© Rights for Humans, Not Robots · <a href="https://rightsforhumansnotrobots.org/">rightsforhumansnotrobots.org</a></p></footer>
+<script src="./script.js" defer></script>
+</body>
+</html>
