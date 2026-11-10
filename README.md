@@ -1,4 +1,8 @@
-# Rights for Humans, Not Robots
+# Copyrights for Humans
+
+https://rightsforhumansnotrobots.org
+
+Copyrights Are PersonHood the value in Humans Intrinsic SouL ROBOTS Are Cloned
 
 Static landing-page project for the Proclamation of Copyrights for Humans.
 
