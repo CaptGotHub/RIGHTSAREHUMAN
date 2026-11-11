@@ -22,3 +22,13 @@ h2{font-family:"IM Fell English SC",serif;font-weight:400;font-size:28px;text-al
 .success{display:none;text-align:center;padding:10px 0}.success.show{display:block}.success .stamp{display:inline-block;transform:rotate(-8deg);border:4px double var(--seal);color:var(--seal);font-family:"IM Fell English SC",serif;font-size:28px;padding:10px 22px;border-radius:6px;margin:10px 0 18px;animation:stamp .45s cubic-bezier(.2,1.6,.4,1) both}@keyframes stamp{from{transform:rotate(-8deg) scale(2.4);opacity:0}to{transform:rotate(-8deg) scale(1);opacity:1}}.success p{font-size:19px;margin:0 0 10px}.share{margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}.share button{font-family:Inter,sans-serif;font-size:13px;padding:9px 16px;border-radius:999px;border:1px solid var(--ink-soft);background:transparent;color:var(--ink);cursor:pointer}.share button:hover{background:var(--ink);color:var(--parchment)}
 footer{max-width:760px;margin:22px auto 0;text-align:center;color:#a8957a;font-family:Inter,sans-serif;font-size:12px}footer a{color:#d6c29f}
 @media(max-width:620px){body{padding:20px 10px 50px}.scroll{padding:44px 26px 40px}.scroll:before{inset:8px}.fields{grid-template-columns:1fr}.field.full{grid-column:auto}.articles li{padding-left:0;padding-top:20px}.articles li:before{top:0}.spectrum-bar{font-size:9px;letter-spacing:.04em}}
+
+/* Shared affirmation and optional structured feedback */
+.affirmation{margin:18px 0 24px;padding:16px;border:1px solid var(--line);border-radius:6px;background:rgba(255,255,255,.28)}
+.opinion-section{margin:22px 0;padding:18px 20px;border:1px solid var(--line);border-radius:6px;background:rgba(255,255,255,.2)}
+.opinion-section h3{margin:0 0 6px;font-family:"IM Fell English SC",serif;font-weight:400;font-size:24px}
+.opinion-section p{margin:0 0 14px;color:var(--ink-soft);font-size:16px}
+.opinion-section label:not(.check){display:block;font:600 12px Inter,sans-serif;letter-spacing:.04em;color:var(--ink-soft);margin:12px 0 6px}
+.opinion-section select,.opinion-section textarea{width:100%;max-width:100%;padding:10px 12px;background:#faf3e4;border:1px solid var(--line);border-radius:4px;color:var(--ink);font:16px/1.5 Georgia,serif}
+.opinion-section select:focus-visible,.opinion-section textarea:focus-visible{outline:2px solid var(--seal);outline-offset:2px}
+.opinion-section .opinion-privacy{font:12px/1.55 Inter,sans-serif;margin:12px 0 0}
