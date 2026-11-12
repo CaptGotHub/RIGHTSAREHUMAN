@@ -23,14 +23,19 @@ form.addEventListener("submit", async (event) => {
   data.motivation = document.querySelector('input[name="motivation"]:checked')?.value || "";
   data.profession = document.getElementById("profession").value.trim();
   data.stance = document.querySelector('input[name="stance"]:checked')?.value || "";
-  data.join_movement = data.stance === "agree";
+  data.join_movement = data.stance === "for";
+  data.publish_opinion = document.getElementById("publish_opinion").checked;
+  data.public_comment = data.publish_opinion ? data.opinion_text : "";
+  data.public_name = data.publish_opinion ? data.name.trim() : "";
+  data.public_position = data.publish_opinion ? data.stance : "";
   data.opinion_text = document.getElementById("opinion_text").value.trim();
 
   data.signed_at = new Date().toISOString();
   data.page = window.location.href;
 
   if (data.website) return;
-  if (!data.stance) return fail("Please select Agree or Disagree.");
+  if (!data.stance) return fail("Please select For or Against.");
+  if (data.publish_opinion && !data.opinion_text) return fail("Please write an explanation if you want your named opinion shared publicly.");
   if (!data.name || data.name.trim().length < 2) return fail("Please add your name. Proclamations need signatures.");
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email || "")) return fail("Please enter a valid email address.");
   if (!data.agree) return fail("Please authorize recording your chosen position.");
