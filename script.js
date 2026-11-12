@@ -20,17 +20,20 @@ form.addEventListener("submit", async (event) => {
   data.human = document.getElementById("human").checked;
   data.confirmation_only = !document.getElementById("updates_opt_in").checked;
   data.updates_opt_in = document.getElementById("updates_opt_in").checked;
-  data.opinion_topic = document.getElementById("opinion_topic").value;
+  data.motivation = document.querySelector('input[name="motivation"]:checked')?.value || "";
+  data.profession = document.getElementById("profession").value.trim();
+  data.stance = document.querySelector('input[name="stance"]:checked')?.value || "";
+  data.join_movement = data.stance === "agree";
   data.opinion_text = document.getElementById("opinion_text").value.trim();
-  data.affirm = document.getElementById("affirm").checked;
+
   data.signed_at = new Date().toISOString();
   data.page = window.location.href;
 
   if (data.website) return;
-  if (!data.affirm) return fail("Please affirm the statement about human authorship.");
+  if (!data.stance) return fail("Please select Agree or Disagree.");
   if (!data.name || data.name.trim().length < 2) return fail("Please add your name. Proclamations need signatures.");
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email || "")) return fail("Please enter a valid email address.");
-  if (!data.agree) return fail("Please confirm that you have read and agree to sign the Proclamation.");
+  if (!data.agree) return fail("Please authorize recording your chosen position.");
   if (data.opinion_text.length > 1000) return fail("Please keep your comments within 1,000 characters.");
   if (!data.human) return fail("Please confirm that you are not a robot.");
 
@@ -54,7 +57,7 @@ form.addEventListener("submit", async (event) => {
   } catch (error) {
     fail("We couldn't submit your signature. Please try again later.");
     signButton.disabled = false;
-    signButton.innerHTML = "Sign the<br>Proclamation<span>✦ SEAL IT ✦</span>";
+    signButton.innerHTML = "Record My<br>Position<span>✦ SEAL IT ✦</span>";
   }
 });
 
@@ -74,7 +77,7 @@ document.getElementById("copyLink").addEventListener("click", async (event) => {
 document.getElementById("shareBtn").addEventListener("click", async () => {
   const shareData = {
     title: "Copyrights for Humans",
-    text: "I support the Proclamation: copyright should protect human creators.",
+    text: "What do you think about protecting human rights and clarifying human personhood?",
     url: SHARE_URL
   };
   if (navigator.share) {
