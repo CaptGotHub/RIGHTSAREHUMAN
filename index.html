@@ -49,23 +49,24 @@
 
   <form id="proclamation" novalidate>
     <div id="form-body">
-      <h2>Do You Agree or Disagree?</h2>
-<p class="h2sub">Only an Agree response joins the movement. Disagreement is welcome but will never be counted as support.</p>
+      <h2>Are You For or Against?</h2>
+<p class="h2sub">Everyone can have a voice. Only a For response counts as supporting and joining the movement.</p>
 <fieldset class="plain"><legend>Your choice <span class="required">(required)</span></legend>
-<label class="choice"><input type="radio" name="stance" value="agree" required><span class="card"><span class="tick">✓</span><span><span class="choice-title">I Agree — Join the Movement</span><span class="desc">Add my name as a supporter of preparing protections for human rights and personhood.</span></span></span></label>
-<label class="choice"><input type="radio" name="stance" value="disagree"><span class="card"><span class="tick">✓</span><span><span class="choice-title">I Disagree — Share My View</span><span class="desc">Record my feedback, but do not add me to the movement or count me as a supporter.</span></span></span></label>
+<label class="choice"><input type="radio" name="stance" value="for" required><span class="card"><span class="tick">✓</span><span><span class="choice-title">For — I Support the Movement</span><span class="desc">Add my name as a supporter of preparing protections for human rights and personhood.</span></span></span></label>
+<label class="choice"><input type="radio" name="stance" value="against"><span class="card"><span class="tick">✓</span><span><span class="choice-title">Against — I Have a Different View</span><span class="desc">Record my opposing position, without counting me as a supporter.</span></span></span></label>
 </fieldset>
-<div class="opinion-section"><label for="opinion_text">Why do you agree or disagree? <span class="optional">(optional)</span></label><textarea id="opinion_text" name="opinion_text" rows="4" maxlength="1000" placeholder="Explain your position in your own words…"></textarea><p class="fine">Your explanation stays private unless you separately authorize quotation.</p></div>
+<div class="opinion-section"><label for="opinion_text">Why are you for or against? <span class="optional">(optional)</span></label><textarea id="opinion_text" name="opinion_text" rows="4" maxlength="1000" placeholder="Explain your position in your own words…"></textarea><p class="fine">Your explanation stays private unless you check the public-sharing box below.</p></div>
+<label class="check publish-opinion"><input type="checkbox" id="publish_opinion" name="publish_opinion"><span class="box" aria-hidden="true">✓</span><span><strong>Share my position and written opinion publicly, with my name.</strong><small>Available to both For and Against participants. Your name and chosen position may be shown alongside your written comments. Your email is required for verification but will never be published.</small></span></label>
 <div class="fields">
-        <div class="field"><label for="name">Your Name</label><input id="name" name="name" type="text" autocomplete="name" placeholder="As you'd sign it" required></div>
-        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+        <div class="field"><label for="name">Your Name (required)</label><input id="name" name="name" type="text" autocomplete="name" placeholder="As you'd sign it" required></div>
+        <div class="field"><label for="email">Email (required, kept private)</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
         <div class="field full"><label for="location">City / Country <span class="optional">(optional)</span></label><input id="location" name="location" type="text" autocomplete="address-level2" placeholder="Where are you signing from?"></div>
       </div>
 
       <div class="hp" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
 
       <div class="checks">
-        <label class="check"><input type="checkbox" name="agree" id="agree"><span class="box" aria-hidden="true">✓</span><span>I authorize recording my selected position. Only an Agree response may be published as a supporting signature.</span></label>
+        <label class="check"><input type="checkbox" name="agree" id="agree"><span class="box" aria-hidden="true">✓</span><span>I authorize recording my named For or Against response. Only a For response joins the movement. Public sharing of my written opinion requires the separate checkbox above.</span></label>
         <label class="check"><input type="checkbox" name="human" id="human"><span class="box" aria-hidden="true">✓</span><span>I confirm I am a human participant.</span></label>
         <label class="check"><input type="checkbox" name="updates_opt_in" id="updates_opt_in"><span class="box" aria-hidden="true">✓</span><span>Yes, I would also like occasional email updates about this effort.<small>Optional. Leave unchecked to receive only messages necessary to confirm your signature or certificate.</small></span></label>
       </div>
@@ -73,7 +74,7 @@
       <p class="setup-note" id="setup-note">Signature collection is being prepared. This form is not yet accepting or storing signatures.</p>
       <p class="error" id="error" role="alert" aria-live="polite"></p>
       <div class="sign-wrap"><button class="sign" type="submit" id="signBtn">Record My<br>Position<span>✦ SEAL IT ✦</span></button></div>
-      <div class="outcome"><strong>What happens when you sign:</strong> after verification, Agree responses may join the public supporter record. Disagree responses remain private feedback and never join the movement. AIN and artifact issuance are planned but not yet connected.</div>
+      <div class="outcome"><strong>What happens when you sign:</strong> after verification, For responses may join the supporter record. Against responses never count as support. Participants on either side can optionally publish their named position and written opinion. Email addresses remain private. AIN and artifact issuance are planned but not yet connected.</div>
     </div>
 
     <div class="success" id="success" aria-live="polite">
