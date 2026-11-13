@@ -25,10 +25,10 @@ form.addEventListener("submit", async (event) => {
   data.stance = document.querySelector('input[name="stance"]:checked')?.value || "";
   data.join_movement = data.stance === "for";
   data.publish_opinion = document.getElementById("publish_opinion").checked;
+  data.opinion_text = document.getElementById("opinion_text").value.trim();
   data.public_comment = data.publish_opinion ? data.opinion_text : "";
   data.public_name = data.publish_opinion ? data.name.trim() : "";
   data.public_position = data.publish_opinion ? data.stance : "";
-  data.opinion_text = document.getElementById("opinion_text").value.trim();
 
   data.signed_at = new Date().toISOString();
   data.page = window.location.href;
