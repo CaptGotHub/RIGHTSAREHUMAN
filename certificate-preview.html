@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Proclamation Certificate — Preview Only</title><meta name="robots" content="noindex,nofollow">
+<style>*{box-sizing:border-box}body{margin:0;padding:25px 12px;background:#241a13;color:#2c1e14;font-family:Georgia,serif}main{max-width:760px;margin:auto;padding:34px clamp(18px,5vw,56px);background:#f4ead5;border:8px double #b99b6f;box-shadow:0 15px 45px #0007}h1,h2{text-align:center;font-weight:normal;font-variant:small-caps}h1{font-size:clamp(30px,6vw,44px)}h2{font-size:24px}.eyebrow{text-align:center;color:#81251f;letter-spacing:.13em;font:700 12px Arial,sans-serif}.subtitle{text-align:center;font-style:italic;color:#604a33}p{line-height:1.6}.notice{background:#fff6dd;border:1px solid #bca17e;padding:13px;font:14px/1.5 Arial,sans-serif}label{display:block;font:700 12px Arial,sans-serif;margin:18px 0 6px}input,select{width:100%;font:16px Georgia,serif;border:1px solid #b39b77;background:#fffaf0;color:#231a12;padding:10px}.certificate{border:2px solid #96774e;outline:1px solid #c3a873;outline-offset:-10px;margin:24px 0;padding:27px 20px;text-align:center;background:#fff8e7}.name{font-size:31px;overflow-wrap:anywhere}.position{color:#81251f;font-weight:bold}.buttons{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin:15px 0}button{padding:11px 14px;background:#89251f;border:1px solid #89251f;color:#fff7e8;font:14px Arial,sans-serif;cursor:pointer;border-radius:4px}button.secondary{background:transparent;color:#66271f}a{color:#7d2520}#feedback{font:700 14px Arial,sans-serif;text-align:center;min-height:22px}@media print{body{background:white;padding:0}.buttons,.notice,.controls,footer{display:none!important}main{border:0;box-shadow:none}.certificate{break-inside:avoid}}</style></head><body><main>
+<p class="eyebrow">Rights for Humans, Not Robots</p><h1>Proclamation Participation Certificate</h1>
+<p class="subtitle">Copyright Is for Humans, Not the Robots.</p>
+<p class="notice"><strong>Unverified demonstration only.</strong> This page generates a sample on your device. It does not verify identity, record signatures, send email, issue an AIN or provide an official certificate. A personalized verified certificate will depend on the future signing service.</p>
+<div class="controls"><label for="person">Name for sample</label><input id="person" maxlength="120" placeholder="Your name" autocomplete="off">
+<label for="position">Position</label><select id="position"><option value="For">For — Supporter</option><option value="Against">Against — Recorded Opinion, not a supporter</option></select></div>
+<section id="certificate" class="certificate" aria-label="Certificate preview"><p class="eyebrow">Public Proclamation</p><h2>Certificate of Participation</h2><p>This sample acknowledges the position of</p><p class="name" id="display-name">Your Name</p><p>regarding <em>Copyright Is for Humans, Not the Robots</em> and the protection of human personhood.</p><p class="position" id="display-position">FOR — Supporter</p><p>Unverified preview · No response recorded</p></section>
+<div class="buttons"><button type="button" data-copy="text">Copy text</button><button type="button" data-copy="markdown">Copy Markdown</button><button type="button" data-copy="html">Copy HTML</button><button type="button" id="print" class="secondary">Print / Save as PDF</button></div>
+<p id="feedback" role="status" aria-live="polite"></p><hr>
+<h2>Invite Someone Else</h2><p>Share this link with others, including those who may disagree:</p><p><a href="https://rightsforhumansnotrobots.org/">https://rightsforhumansnotrobots.org/</a></p>
+<div class="buttons"><button type="button" id="copy-share">Copy invitation link</button></div>
+<p class="notice">When real certificates become available, their name, response, verification date and any identifier must come from the verified server record, not from fields in this preview.</p>
+<footer><p style="text-align:center"><a href="./">Return to the proclamation</a></p></footer></main>
+<script>
+(()=>{const name=document.getElementById('person'),position=document.getElementById('position'),feedback=document.getElementById('feedback');
+const val=()=>({name:name.value.trim()||'Your Name',position:position.value});
+const escapeHTML=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+function update(){const x=val();document.getElementById('display-name').textContent=x.name;document.getElementById('display-position').textContent=x.position==='For'?'FOR — Supporter':'AGAINST — Not a Supporter';}
+name.addEventListener('input',update);position.addEventListener('change',update);
+function plain(){const x=val();return 'PROCLAMATION PARTICIPATION CERTIFICATE (UNVERIFIED PREVIEW)\nCopyright Is for Humans, Not the Robots.\nName: '+x.name+'\nPosition: '+x.position+'\nNo signature or AIN issued\nhttps://rightsforhumansnotrobots.org/';}
+function md(){return '**Proclamation Participation Certificate — UNVERIFIED PREVIEW**\n\n'+plain().split('\n').slice(1).join('  \n');}
+function markup(){const x=val();return '<article><h1>Proclamation Participation Certificate (Unverified Preview)</h1><p>Copyright Is for Humans, Not the Robots.</p><p>Name: '+escapeHTML(x.name)+'</p><p>Position: '+escapeHTML(x.position)+'</p><p>No verified signature or AIN has been issued.</p></article>';}
+async function copy(s){try{await navigator.clipboard.writeText(s);feedback.textContent='Copied (preview only).';}catch(e){feedback.textContent='Copy unavailable in this browser. Select the text manually.';}}
+document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>copy(b.dataset.copy==='html'?markup():b.dataset.copy==='markdown'?md():plain())));
+document.getElementById('copy-share').addEventListener('click',()=>copy('https://rightsforhumansnotrobots.org/'));
+document.getElementById('print').addEventListener('click',()=>window.print());
+})();
+</script></body></html>
