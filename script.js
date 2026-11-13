@@ -14,6 +14,7 @@ const signButton = document.getElementById("signBtn");
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   errorEl.textContent = "";
+  errorEl.style.display = "none";
 
   const data = Object.fromEntries(new FormData(form).entries());
   data.agree = document.getElementById("agree").checked;
@@ -43,7 +44,7 @@ form.addEventListener("submit", async (event) => {
   if (!data.human) return fail("Please confirm that you are not a robot.");
 
   if (!FORM_ENDPOINT) {
-    return fail("The signing service is not connected yet. Your information has not been submitted or stored.");
+    return fail("PREVIEW ONLY: Nothing was recorded and no confirmation email was sent. Email confirmation and certificates will become available after the signing service is connected.");
   }
 
   signButton.disabled = true;
@@ -68,6 +69,9 @@ form.addEventListener("submit", async (event) => {
 
 function fail(message) {
   errorEl.textContent = message;
+  errorEl.style.display = "block";
+  errorEl.scrollIntoView({ behavior: "smooth", block: "center" });
+  errorEl.focus({ preventScroll: true });
 }
 
 document.getElementById("copyLink").addEventListener("click", async (event) => {
