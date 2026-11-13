@@ -1,18 +1,16 @@
-/*
- * copyrights-for-humans — the single authoritative signing service.
- *
- * Serves two front ends from ONE D1 database and ONE email sender:
- *   1. Legacy OnlyUno page:  https://onlyuno.xyz/copyrightsforhumans/*
- *      (stances: fully-human | human-at-the-helm | people-first)
- *   2. Rights for Humans:    https://rightsforhumansnotrobots.org/{api,verify,certificate,unsubscribe}
- *      (positions: for | against). Static pages are served by Cloudflare Pages;
- *      only the dynamic paths above are routed to this Worker, so the form
- *      submits same-origin and no secrets ever reach browser JavaScript.
- *
- * One email = one signature across both sites. Verification links are
- * single-use and expire; certificates are rendered only from the verified
- * server record. No AIN is issued here.
- */
+// copyrights-for-humans — the single authoritative signing service.
+//
+// Serves two front ends from ONE D1 database and ONE email sender:
+//   1. Legacy OnlyUno page:  https://onlyuno.xyz/copyrightsforhumans/*
+//      (stances: fully-human | human-at-the-helm | people-first)
+//   2. Rights for Humans:    https://rightsforhumansnotrobots.org/{api,verify,certificate,unsubscribe}
+//      (positions: for | against). Static pages are served by Cloudflare Pages;
+//      only the dynamic paths above are routed to this Worker, so the form
+//      submits same-origin and no secrets ever reach browser JavaScript.
+//
+// One email = one signature across both sites. Verification links are
+// single-use and expire; certificates are rendered only from the verified
+// server record. No AIN is issued here.
 import PAGE_HTML from './legacy-onlyuno-page.html'; // Text module (wrangler default rule for *.html)
 
 const BASE = '/copyrightsforhumans';
@@ -40,7 +38,7 @@ const TOKEN_TTL_HOURS = 72;
 const RESEND_MIN_MINUTES = 2;
 const TOKEN_RE = /^[a-f0-9]{48}$/;
 
-/* ------------------------------------------------------------------ routing */
+// ------------------------------------------------------------------ routing
 
 export default {
   async fetch(request, env, ctx) {
@@ -82,7 +80,7 @@ function page(env) {
   return new Response(html, { headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'public, max-age=300', 'x-content-type-options': 'nosniff', 'referrer-policy': 'strict-origin-when-cross-origin' } });
 }
 
-/* ------------------------------------------------------------- public reads */
+// ------------------------------------------------------------- public reads
 
 async function count(env, L) {
   if (L.rfh) {
@@ -111,7 +109,7 @@ async function comments(env, L) {
   return json({ comments: items }, 200, { 'cache-control': 'public, max-age=60' });
 }
 
-/* ------------------------------------------------------------------- sign */
+// ------------------------------------------------------------------- sign
 
 async function sign(request, env, ctx, L) {
   // Fail closed: a browser always sends Origin on a fetch POST.
@@ -214,7 +212,7 @@ async function sign(request, env, ctx, L) {
   return json({ ok: true, status: 'pending' });
 }
 
-/* ------------------------------------------------------------------- email */
+// ------------------------------------------------------------------- email
 
 function brand(L) {
   return L.rfh
@@ -308,7 +306,7 @@ async function notifyOwner(env, row) {
   } catch (e) { console.error('notify failed', e && e.message); }
 }
 
-/* --------------------------------------------------- verify / certificate */
+// --------------------------------------------------- verify / certificate
 
 async function verify(url, env, L) {
   const t = url.searchParams.get('t') || '';
@@ -501,7 +499,7 @@ h2{font-family:"IM Fell English SC",serif;font-weight:400;font-size:26px;margin:
 </style></head><body><main class="card">${inner}</main></body></html>`, { status, headers: { 'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff', 'referrer-policy': 'no-referrer', 'x-frame-options': 'DENY' } });
 }
 
-/* ------------------------------------------------------------------- admin */
+// ------------------------------------------------------------------- admin
 
 async function admin(path, url, request, env) {
   const key = (request.headers.get('authorization') || '').replace(/^Bearer\s+/i, '') || url.searchParams.get('key') || '';
@@ -534,7 +532,7 @@ async function admin(path, url, request, env) {
   return new Response('Not found', { status: 404 });
 }
 
-/* ----------------------------------------------------------------- helpers */
+// ----------------------------------------------------------------- helpers
 
 function json(obj, status = 200, extra = {}) {
   return new Response(JSON.stringify(obj), { status, headers: { 'content-type': 'application/json', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff', ...extra } });
