@@ -74,16 +74,16 @@
         <label class="check"><input type="checkbox" name="updates_opt_in" id="updates_opt_in"><span class="box" aria-hidden="true">✓</span><span>Yes, I would also like occasional email updates about this effort.<small>Optional. Leave unchecked to receive only messages necessary to confirm your signature or certificate.</small></span></label>
       </div>
 
-      <p class="setup-note" id="setup-note">Signature collection is being prepared. This form is not yet accepting or storing signatures.</p>
-      <p class="error" id="error" role="alert" aria-live="polite"></p>
+      <p class="setup-note" id="setup-note"><strong>Signing is not yet live.</strong> When the signing service is connected, we will email you a link to confirm your named For or Against response. After verification, you will receive a personal proclamation certificate in copyable formats and a separate link to invite others. Please check Spam or Junk for the confirmation email.</p>
+      <p class="error" id="error" role="alert" aria-live="assertive" tabindex="-1" style="display:none;border:2px solid #9b1c1c;border-radius:6px;background:#fff6e9;padding:16px;color:#8f1e1e;font:700 15px/1.5 Arial,sans-serif"></p>
       <div class="sign-wrap"><button class="sign" type="submit" id="signBtn">Record My<br>Position<span>✦ SEAL IT ✦</span></button></div>
-      <div class="outcome"><strong>What happens when you sign:</strong> after verification, For responses may join the supporter record. Against responses never count as support. Participants on either side can optionally publish their named position and written opinion. Email addresses remain private. AIN and artifact issuance are planned but not yet connected.</div>
+      <div class="outcome"><strong>After email confirmation (when the service is live):</strong> You will receive a named Proclamation Participation Certificate that states <em>For</em> or <em>Against</em> and lets you copy text, Markdown, or an HTML version. A separate sharing link will invite others to respond. Only verified For responses join the movement. Your email remains private. Future AIN and NFARTIFACT issuance require a separate, confirmed integration. <a href="./certificate-preview.html">Preview the certificate and sharing options</a>.</div>
     </div>
 
     <div class="success" id="success" aria-live="polite">
       <div class="stamp">Submission Received</div>
       <p><strong id="thanksName">Thank you</strong>, your response was received.</p>
-      <p>Check your inbox for verification instructions. Your response is not yet verified.</p>
+      <p><strong>Next step: check your email.</strong> When verification is connected, you must open the confirmation link to verify your response. If you do not see it, check Spam or Junk. After verification, your certificate and share link will be available.</p>
       <div class="share"><button type="button" id="copyLink">Copy link to share</button><button type="button" id="shareBtn">Share</button></div>
     </div>
   </form>
