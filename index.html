@@ -54,6 +54,7 @@
     <div id="form-body">
       <h2>Are You For or Against?</h2>
 <p class="h2sub">Everyone can have a voice. Only a For response counts as joining the movement. <span class="required">*</span> indicates required.</p>
+<p class="tally" id="tally" hidden><span><b id="t-for">0</b> verified supporters</span> · <span><b id="t-against">0</b> verified Against responses</span></p>
 <fieldset class="plain"><legend>Your choice <span class="required" aria-label="required">*</span></legend>
 <label class="choice"><input type="radio" name="stance" value="for" required><span class="card"><span class="tick">✓</span><span><span class="choice-title">For — I Support the Movement</span><span class="desc">Add my name in support of preparing protections for human rights and the distinct legal meaning of human personhood.</span></span></span></label>
 <label class="choice"><input type="radio" name="stance" value="against"><span class="card"><span class="tick">✓</span><span><span class="choice-title">Against — I Have a Different View</span><span class="desc">Record my opposing position, without counting me as a supporter.</span></span></span></label>
@@ -74,16 +75,16 @@
         <label class="check"><input type="checkbox" name="updates_opt_in" id="updates_opt_in"><span class="box" aria-hidden="true">✓</span><span>Yes, I would also like occasional email updates about this effort.<small>Optional. Leave unchecked to receive only messages necessary to confirm your signature or certificate.</small></span></label>
       </div>
 
-      <p class="setup-note" id="setup-note"><strong>Signing is not yet live.</strong> When the signing service is connected, we will email you a link to confirm your named For or Against response. After verification, you will receive a personal proclamation certificate in copyable formats and a separate link to invite others. Please check Spam or Junk for the confirmation email.</p>
+      <p class="setup-note" id="setup-note"><strong>How confirmation works:</strong> we email you one link from <em>proclamation@onlyuno.xyz</em> to confirm your named For or Against response. Nothing counts until you open it. The link works once and expires after 72 hours. After confirming, you get your personal certificate in copyable formats and a separate link to invite others. Please check Spam or Junk.</p>
       <p class="error" id="error" role="alert" aria-live="assertive" tabindex="-1" style="display:none;border:2px solid #9b1c1c;border-radius:6px;background:#fff6e9;padding:16px;color:#8f1e1e;font:700 15px/1.5 Arial,sans-serif"></p>
       <div class="sign-wrap"><button class="sign" type="submit" id="signBtn">Record My<br>Position<span>✦ SEAL IT ✦</span></button></div>
-      <div class="outcome"><strong>After email confirmation (when the service is live):</strong> You will receive a named Proclamation Participation Certificate that states <em>For</em> or <em>Against</em> and lets you copy text, Markdown, or an HTML version. A separate sharing link will invite others to respond. Only verified For responses join the movement. Your email remains private. Future AIN and NFARTIFACT issuance require a separate, confirmed integration. <a href="./certificate-preview.html">Preview the certificate and sharing options</a>.</div>
+      <div class="outcome"><strong>After email confirmation:</strong> You will receive a named Proclamation Participation Certificate that states <em>For</em> or <em>Against</em> and lets you copy text, Markdown, or an HTML version. A separate sharing link will invite others to respond. Only verified For responses join the movement. Your email remains private. No AIN or NFARTIFACT is issued with this certificate. <a href="./certificate-preview.html">See a sample certificate</a>.</div>
     </div>
 
     <div class="success" id="success" aria-live="polite">
       <div class="stamp">Submission Received</div>
       <p><strong id="thanksName">Thank you</strong>, your response was received.</p>
-      <p><strong>Next step: check your email.</strong> When verification is connected, you must open the confirmation link to verify your response. If you do not see it, check Spam or Junk. After verification, your certificate and share link will be available.</p>
+      <p><strong>Next step: check your email.</strong> We sent a confirmation link to <strong id="sentTo">your inbox</strong> from proclamation@onlyuno.xyz. Your response is not counted until you open it. If you do not see it within a few minutes, check Spam or Junk. Opening the link takes you to your certificate and invitation link.</p>
       <div class="share"><button type="button" id="copyLink">Copy link to share</button><button type="button" id="shareBtn">Share</button></div>
     </div>
   </form>

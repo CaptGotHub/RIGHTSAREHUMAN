@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Proclamation of Copyrights for Humans · OnlyUno</title>
+<meta name="description" content="A public proclamation: copyrights belong to people, not the robots. Add your name.">
+<meta property="og:title" content="Copyrights for Humans — Sign the Proclamation">
+<meta property="og:description" content="Copyrights belong to people, not the robots. Add your name.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=IM+Fell+English+SC&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+--parchment:#f4ead5;
+--parchment-dark:#e8d9b8;
+--ink:#2b1d0e;
+--ink-soft:#5a4630;
+--seal:#9b1c1c;
+--seal-dark:#6e1212;
+--gold:#b8892f;
+--line:#cdb88f;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+background:#2a2118;
+background-image:radial-gradient(ellipse at top,#3b2e20 0%,#1c160f 70%);
+color:var(--ink);
+font-family:"IM Fell English",Georgia,serif;
+line-height:1.55;
+padding:40px 16px 80px;
+min-height:100vh;
+}
+.scroll{
+max-width:760px;margin:0 auto;
+background:var(--parchment);
+background-image:
+radial-gradient(ellipse at 20% 10%,rgba(255,255,255,.45),transparent 55%),
+radial-gradient(ellipse at 80% 90%,rgba(160,120,60,.18),transparent 60%);
+border-radius:4px;
+box-shadow:0 30px 80px rgba(0,0,0,.55),inset 0 0 90px rgba(120,80,30,.25);
+padding:64px 64px 56px;
+position:relative;
+}
+.scroll::before{
+content:"";position:absolute;inset:14px;
+border:1px solid var(--line);outline:3px double var(--line);outline-offset:4px;
+pointer-events:none;border-radius:2px;
+}
+.eyebrow{
+text-align:center;font-family:"IM Fell English SC",serif;
+letter-spacing:.25em;font-size:14px;color:var(--ink-soft);margin:0 0 8px;
+}
+h1{
+text-align:center;font-family:"IM Fell English SC",serif;font-weight:400;
+font-size:clamp(34px,6vw,54px);line-height:1.05;margin:0 0 6px;
+}
+.sub{text-align:center;font-style:italic;font-size:19px;color:var(--ink-soft);margin:0 0 30px}
+.rule{display:flex;align-items:center;gap:14px;margin:26px 0;color:var(--gold)}
+.rule::before,.rule::after{content:"";flex:1;height:1px;background:var(--line)}
+.preamble p{font-size:19px;margin:0 0 14px}
+.dropcap::first-letter{
+float:left;font-family:"IM Fell English SC",serif;font-size:68px;line-height:.85;
+padding:6px 10px 0 0;color:var(--seal);
+}
+.articles{list-style:none;padding:0;margin:8px 0 0;counter-reset:art}
+.articles li{
+counter-increment:art;position:relative;padding:0 0 14px 64px;font-size:18px;
+}
+.articles li::before{
+content:"Art. " counter(art,upper-roman);
+position:absolute;left:0;top:2px;font-family:"IM Fell English SC",serif;
+font-size:14px;color:var(--seal);letter-spacing:.05em;
+}
+.articles strong{font-weight:400;font-family:"IM Fell English SC",serif;letter-spacing:.02em}
+h2{font-family:"IM Fell English SC",serif;font-weight:400;font-size:28px;text-align:center;margin:0 0 4px}
+.h2sub{text-align:center;font-style:italic;color:var(--ink-soft);margin:0 0 20px}
+/* Spectrum choices */
+.spectrum{display:grid;gap:12px}
+.spectrum-bar{
+display:flex;justify-content:space-between;font-family:Inter,sans-serif;font-size:11px;
+letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin:0 4px 4px;
+}
+.choice{position:relative;display:block;cursor:pointer}
+.choice input{position:absolute;opacity:0;pointer-events:none}
+.choice .card{
+display:flex;gap:16px;align-items:flex-start;
+border:1px solid var(--line);border-radius:6px;padding:16px 18px;
+background:rgba(255,255,255,.28);transition:all .15s ease;
+}
+.choice:hover .card{background:rgba(255,255,255,.5)}
+.choice input:focus-visible + .card{outline:2px solid var(--seal);outline-offset:2px}
+.choice input:checked + .card{border-color:var(--seal);background:rgba(155,28,28,.07);box-shadow:inset 4px 0 0 var(--seal)}
+.tick{
+flex:none;width:30px;height:30px;border-radius:50%;border:2px solid var(--ink-soft);
+display:grid;place-items:center;margin-top:2px;transition:all .15s;
+}
+.tick svg{width:16px;height:16px;opacity:0;transform:scale(.4);transition:all .15s}
+.choice input:checked + .card .tick{background:var(--seal);border-color:var(--seal)}
+.choice input:checked + .card .tick svg{opacity:1;transform:scale(1)}
+.choice .title{font-family:"IM Fell English SC",serif;font-size:21px;display:block;line-height:1.2}
+.choice .desc{font-size:16.5px;color:var(--ink-soft);display:block;margin-top:3px}
+.choice .pos{
+font-family:Inter,sans-serif;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+color:var(--seal);display:block;margin-bottom:2px;
+}
+/* Fields */
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:22px}
+.field label{display:block;font-family:Inter,sans-serif;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
+.field input{
+width:100%;font:inherit;font-size:18px;color:var(--ink);
+background:transparent;border:none;border-bottom:1.5px solid var(--ink-soft);
+padding:6px 2px;border-radius:0;
+}
+.field input:focus{outline:none;border-bottom-color:var(--seal)}
+.field.full{grid-column:1/-1}
+/* Checkboxes */
+.checks{margin-top:24px;display:grid;gap:12px}
+.check{display:flex;gap:12px;align-items:flex-start;cursor:pointer;font-size:17px}
+.check input{position:absolute;opacity:0;pointer-events:none}
+.box{
+flex:none;width:24px;height:24px;border:2px solid var(--ink-soft);border-radius:3px;
+display:grid;place-items:center;margin-top:2px;background:rgba(255,255,255,.35);transition:all .12s;
+}
+.box svg{width:15px;height:15px;opacity:0;transition:opacity .12s}
+.check input:checked + .box{background:var(--ink);border-color:var(--ink)}
+.check input:checked + .box svg{opacity:1}
+.check input:focus-visible + .box{outline:2px solid var(--seal);outline-offset:2px}
+.check small{display:block;color:var(--ink-soft);font-style:italic;font-size:14.5px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.error{color:var(--seal);font-family:Inter,sans-serif;font-size:13.5px;min-height:20px;margin-top:14px;text-align:center}
+.sign-wrap{display:flex;justify-content:center;margin-top:10px}
+button.sign{
+position:relative;border:none;cursor:pointer;
+width:150px;height:150px;border-radius:50%;
+background:radial-gradient(circle at 35% 30%,#c23030,var(--seal) 55%,var(--seal-dark));
+color:#f9e7c8;font-family:"IM Fell English SC",serif;font-size:21px;line-height:1.1;
+box-shadow:0 6px 0 var(--seal-dark),0 12px 24px rgba(0,0,0,.3),inset 0 0 0 6px rgba(255,255,255,.08),inset 0 0 0 9px rgba(0,0,0,.12);
+transition:transform .1s, box-shadow .1s;
+}
+button.sign:hover{transform:translateY(-2px) rotate(-2deg)}
+button.sign:active{transform:translateY(4px);box-shadow:0 2px 0 var(--seal-dark),0 4px 10px rgba(0,0,0,.3)}
+button.sign[disabled]{opacity:.7;cursor:wait}
+button.sign span{display:block;font-size:12px;letter-spacing:.15em;margin-top:4px;opacity:.85}
+.outcome{
+margin-top:30px;padding:18px 20px;border:1px dashed var(--line);border-radius:6px;
+font-size:16.5px;background:rgba(255,255,255,.22);
+}
+.outcome b{font-family:"IM Fell English SC",serif;font-weight:400;font-size:18px;color:var(--seal)}
+.signed-by{margin-top:36px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap}
+.sig{min-width:220px}
+.sig .name{font-family:"IM Fell English",serif;font-style:italic;font-size:30px;border-bottom:1px solid var(--ink);padding:0 6px 2px}
+.sig .role{font-family:Inter,sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-top:6px}
+.abstain{font-size:14.5px;font-style:italic;color:var(--ink-soft);max-width:300px;text-align:right}
+/* Success state */
+.success{display:none;text-align:center;padding:10px 0}
+.success.show{display:block}
+.success .stamp{
+display:inline-block;transform:rotate(-8deg);border:4px double var(--seal);color:var(--seal);
+font-family:"IM Fell English SC",serif;font-size:28px;padding:10px 22px;border-radius:6px;margin:10px 0 18px;
+animation:stamp .45s cubic-bezier(.2,1.6,.4,1) both;
+}
+@keyframes stamp{from{transform:rotate(-8deg) scale(2.4);opacity:0}to{transform:rotate(-8deg) scale(1);opacity:1}}
+.success p{font-size:19px;margin:0 0 10px}
+.why{font-family:Inter,sans-serif;font-size:12.5px;line-height:1.5;color:var(--ink-soft);margin-top:7px}
+.tally{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:-8px 0 22px;font-family:Inter,sans-serif}
+.tally .pill{border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:12.5px;color:var(--ink-soft);background:rgba(255,255,255,.3)}
+.tally .pill b{color:var(--seal);font-weight:600}
+.tally .total{font-size:13.5px;color:var(--ink)}
+#ts{display:flex;justify-content:center;margin-top:18px;min-height:0}
+.share{margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.share button{font-family:Inter,sans-serif;font-size:13px;padding:9px 16px;border-radius:999px;border:1px solid var(--ink-soft);background:transparent;color:var(--ink);cursor:pointer}
+.share button:hover{background:var(--ink);color:var(--parchment)}
+footer{max-width:760px;margin:22px auto 0;text-align:center;color:#a8957a;font-family:Inter,sans-serif;font-size:12px}
+footer a{color:#d6c29f}
+@media (max-width:620px){
+.scroll{padding:44px 26px 40px}
+.scroll::before{inset:8px}
+.fields{grid-template-columns:1fr}
+.articles li{padding-left:0;padding-top:20px}
+.abstain{text-align:left}
+}
+.cta-wrap{text-align:center;margin:-6px 0 4px}
+.cta{display:inline-block;background:var(--seal);color:#f9e7c8;text-decoration:none;font-family:"IM Fell English SC",serif;font-size:20px;padding:12px 26px;border-radius:999px;box-shadow:0 4px 0 var(--seal-dark)}
+.cta:hover{transform:translateY(-1px)}
+.cta-note{font-family:Inter,sans-serif;font-size:12px;color:var(--ink-soft);margin:8px 0 0}
+.dated{text-align:center;font-style:italic;font-size:16px;color:var(--ink-soft);margin:-18px 0 22px}
+.step{display:flex;align-items:center;gap:10px;font-family:"IM Fell English SC",serif;font-size:20px;margin:26px 0 12px}
+.step span{flex:none;width:30px;height:30px;border-radius:50%;background:var(--ink);color:var(--parchment);display:grid;place-items:center;font-family:Inter,sans-serif;font-size:14px;font-weight:600}
+.next{text-align:left;max-width:460px;margin:14px auto;padding:0;list-style:none;counter-reset:n}
+.next li{counter-increment:n;position:relative;padding:0 0 12px 44px;font-size:18px}
+.next li::before{content:counter(n);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:var(--seal);color:#f9e7c8;display:grid;place-items:center;font-family:Inter,sans-serif;font-size:14px;font-weight:600}
+.resend{font-family:Inter,sans-serif;font-size:13px;padding:9px 16px;border-radius:999px;border:1px solid var(--seal);background:transparent;color:var(--seal);cursor:pointer;margin-top:6px}
+.resend:hover{background:var(--seal);color:#f9e7c8}
+.error:not(:empty){background:rgba(155,28,28,.08);border:1px solid var(--seal);border-radius:6px;padding:10px 14px;font-size:14.5px}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+<main class="scroll">
+<p class="eyebrow">OnlyUno · A Public Proclamation</p>
+<h1>Copyrights for Humans</h1>
+<p class="sub">Being a Declaration that Copyrights Belong to People, Not the Robots</p>
+<p class="dated">Proclaimed this 8th day of November, 2026</p>
+<div class="cta-wrap"><a class="cta" href="#sign">✍ Sign the Proclamation ↓</a><p class="cta-note">Takes 30 seconds · 3 quick steps</p></div>
+<div class="rule">❦</div>
+<section class="preamble">
+<p class="dropcap">Whereas every song, story, photograph, painting and line of code worth protecting began as a spark in a human mind; and whereas machines now produce words and pictures by the billion, at no cost and without rest; and whereas the purpose of copyright has always been to reward and encourage <em>people</em> who create;</p>
+<p>We, the undersigned humans, do hereby proclaim:</p>
+<ol class="articles">
+<li><strong>Copyright is a human right.</strong> It exists to protect the work of human creators, and should remain in the hands of people.</li>
+<li><strong>Tools are not authors.</strong> A brush, a camera, a guitar or a computer program may help make a work, but the credit and the rights belong to the person who made it.</li>
+<li><strong>Creators deserve a say.</strong> People should know when their work is used to train machines, and have a voice in how it is used.</li>
+<li><strong>Humans first, always.</strong> As technology changes, the law should change with it, but never at the expense of the people who make culture.</li>
+</ol>
+</section>
+<div class="rule">❦</div>
+<form id="proclamation" novalidate>
+<div id="form-body">
+<h2 id="sign">Sign the Proclamation</h2>
+<p class="h2sub">Three quick steps. Every point on the spectrum counts.</p>
+<div class="tally" id="tally" hidden>
+<span class="pill total"><b id="t-total">0</b> verified humans have signed</span>
+<span class="pill">Fully Human <b id="t-fully-human">0</b></span>
+<span class="pill">Human at the Helm <b id="t-human-at-the-helm">0</b></span>
+<span class="pill">People First <b id="t-people-first">0</b></span>
+</div>
+<p class="step"><span>1</span> Choose where you stand</p>
+<div class="spectrum" role="radiogroup" aria-label="Where do you stand?">
+<div class="spectrum-bar"><span>◀ Strictly human</span><span>Open to new ideas ▶</span></div>
+<label class="choice">
+<input type="radio" name="stance" value="fully-human">
+<span class="card">
+<span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#f9e7c8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span>
+<span class="pos">Position I</span>
+<span class="title">Fully Human</span>
+<span class="desc">Copyright belongs to humans alone. Anything made by a machine belongs to no one and to everyone.</span>
+</span>
+</span>
+</label>
+<label class="choice">
+<input type="radio" name="stance" value="human-at-the-helm">
+<span class="card">
+<span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#f9e7c8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span>
+<span class="pos">Position II</span>
+<span class="title">Human at the Helm</span>
+<span class="desc">AI can be a tool, like a camera or a synthesizer, but only real human creativity earns copyright.</span>
+</span>
+</span>
+</label>
+<label class="choice">
+<input type="radio" name="stance" value="people-first">
+<span class="card">
+<span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="#f9e7c8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span>
+<span class="pos">Position III</span>
+<span class="title">People First, Open Mind</span>
+<span class="desc">The rules may need to evolve, and I'm open to new ideas, as long as people come first.</span>
+</span>
+</span>
+</label>
+</div>
+<p class="step"><span>2</span> Add your name and email</p>
+<div class="fields">
+<div class="field">
+<label for="name">Your Name</label>
+<input id="name" name="name" type="text" autocomplete="name" placeholder="As you'd sign it" required>
+</div>
+<div class="field">
+<label for="email">Email</label>
+<input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+</div>
+<div class="field full">
+<p class="why"><strong>Why we need your email:</strong> a robot can type a name, but it can't easily prove it owns a real inbox. We'll send you one link. Click it and your signature counts. Signatures that aren't confirmed are never counted or shown. One email, one signature.</p>
+</div>
+<div class="field full">
+<label for="location">City / Country <span style="text-transform:none;font-weight:400;letter-spacing:0">(optional)</span></label>
+<input id="location" name="location" type="text" autocomplete="address-level2" placeholder="Where are you signing from?">
+</div>
+</div>
+<div class="hp" aria-hidden="true">
+<label for="website">If you are a robot, please enter your website here</label>
+<input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+</div>
+<p class="step"><span>3</span> Tick the boxes, then press the red seal</p>
+<div class="checks">
+<label class="check">
+<input type="checkbox" name="agree" id="agree">
+<span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#f4ead5" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span>I have read this Proclamation and add my name to it.</span>
+</label>
+<label class="check">
+<input type="checkbox" name="human" id="human">
+<span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#f4ead5" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span>I solemnly swear that I, myself, am not a robot.
+<small>Robots: we're on the honor system here. Please don't make this awkward.</small></span>
+</label>
+<label class="check">
+<input type="checkbox" name="confirmation_only" id="confirmation_only">
+<span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#f4ead5" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+<span>Send me <em>only</em> my confirmation email and Certificate of Humanity. No other emails, ever.
+<small>Leave unchecked to get the occasional update on the movement.</small></span>
+</label>
+</div>
+<div id="ts"></div>
+<div class="error" id="error" role="alert"></div>
+<div class="sign-wrap">
+<button class="sign" type="submit" id="signBtn">Sign the<br>Proclamation<span>✦ SEAL IT ✦</span></button>
+</div>
+<div class="outcome">
+<b>What happens when you sign:</b> we email you one (1) link. Click it, and your name officially joins the Proclamation and you receive your <em>Certificate of Humanity</em>: proof, at last, that a person and not a program stood here and said so. The confirmed count becomes a public record we'll share with lawmakers and the creative community.
+</div>
+</div>
+<div class="success" id="success" aria-live="polite">
+<div class="stamp">Almost Human</div>
+<p><strong id="thanksName">Thank you</strong>. One last step.</p>
+<ol class="next">
+<li>Open your email: <strong id="sentTo">your inbox</strong></li>
+<li>Find the email <em>“One click to prove you're human”</em> from Copyrights for Humans. Check your spam or promotions folder too.</li>
+<li>Click <strong>“I am a human. Count my signature.”</strong> and your signature counts.</li>
+<li>Your <em>Certificate of Humanity</em> opens. Print it or share it!</li>
+</ol>
+<p style="font-size:15px;font-style:italic;color:var(--ink-soft)">Nothing after a few minutes? Robots get very jealous of our emails.</p>
+<button type="button" class="resend" id="resendBtn">Send the email again</button>
+<div class="share">
+<button type="button" id="copyLink">Copy link to share</button>
+<button type="button" id="shareBtn">Share</button>
+</div>
+</div>
+</form>
+<div class="signed-by">
+<div class="sig">
+<div class="name">Nick Laudani</div>
+<div class="role">Author of the Proclamation · OnlyUno</div>
+<div class="role">First signed November 8, 2026</div>
+</div>
+<p class="abstain">In the interest of full disclosure: this Proclamation was drafted with the help of an AI, which has respectfully abstained from signing.</p>
+</div>
+</main>
+<footer>
+<p>© OnlyUno · <a href="https://onlyuno.xyz">onlyuno.xyz</a> · We'll never sell or share your email.</p>
+</footer>
+<script>
+const API = '/copyrightsforhumans/api';
+const TS_SITEKEY = '__TURNSTILE_SITEKEY__';
+const form = document.getElementById('proclamation');
+const errorEl = document.getElementById('error');
+const btn = document.getElementById('signBtn');
+const BTN_HTML = btn.innerHTML;
+let tsWidget = null;
+// Optional Cloudflare Turnstile ("prove you're human" check)
+if (TS_SITEKEY && !TS_SITEKEY.startsWith('__')) {
+window.onTsLoad = () => { tsWidget = turnstile.render('#ts', { sitekey: TS_SITEKEY, theme: 'light' }); };
+const s = document.createElement('script');
+s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTsLoad&render=explicit';
+s.async = true; document.head.appendChild(s);
+}
+// Live tally of verified signatures
+async function loadTally(){
+try {
+const r = await fetch(API + '/count'); if (!r.ok) return;
+const d = await r.json();
+document.getElementById('t-total').textContent = d.total.toLocaleString();
+for (const k of ['fully-human','human-at-the-helm','people-first'])
+document.getElementById('t-' + k).textContent = (d.by_stance[k] || 0).toLocaleString();
+if (d.total > 0) document.getElementById('tally').hidden = false;
+} catch {}
+}
+loadTally();
+form.addEventListener('submit', async (e) => {
+e.preventDefault();
+errorEl.textContent = '';
+const data = Object.fromEntries(new FormData(form).entries());
+data.agree = form.agree.checked;
+data.human = form.human.checked;
+data.confirmation_only = form.confirmation_only.checked;
+if (!data.stance) return fail('Please choose where you stand on the spectrum.');
+if (!data.name || data.name.trim().length < 2) return fail('Please add your name. Proclamations need signatures.');
+if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((data.email || '').trim())) return fail('Please enter a real email. It\'s how we confirm you\'re a person and not a robot.');
+if (!data.agree) return fail('Please tick the box to add your name to the Proclamation.');
+if (!data.human) return fail('We need you to swear you\'re not a robot. Just a formality. Probably.');
+if (tsWidget !== null) {
+data.ts_token = turnstile.getResponse(tsWidget);
+if (!data.ts_token) return fail('Please complete the quick human check above.');
+}
+btn.disabled = true;
+btn.innerHTML = 'Sealing…';
+try {
+const res = await fetch(API + '/sign', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify(data)
+});
+const out = await res.json().catch(() => ({}));
+if (!res.ok || !out.ok) throw new Error(out.error || 'Something went wrong saving your signature. Please try again in a moment.');
+window.__last = data;
+showSuccess(data.name, data.email);
+} catch (err) {
+btn.disabled = false;
+btn.innerHTML = BTN_HTML;
+if (tsWidget !== null) turnstile.reset(tsWidget);
+fail(err.message);
+}
+});
+function fail(msg){ errorEl.textContent = msg; errorEl.scrollIntoView({behavior:'smooth', block:'center'}); }
+document.getElementById('resendBtn').addEventListener('click', async (e) => {
+const b = e.target; if (!window.__last) return; b.disabled = true; b.textContent = 'Sending…';
+try { await fetch(API + '/sign', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(window.__last) }); b.textContent = 'Sent again. Check your inbox (and spam).'; }
+catch { b.disabled = false; b.textContent = 'Try again'; }
+});
+function showSuccess(name, email){
+document.getElementById('form-body').style.display = 'none';
+const first = (name || '').trim().split(/\s+/)[0];
+document.getElementById('thanksName').textContent = first ? `Thank you, ${first}` : 'Thank you';
+document.getElementById('sentTo').textContent = email;
+document.getElementById('success').classList.add('show');
+document.getElementById('success').scrollIntoView({behavior:'smooth', block:'center'});
+}
+const shareUrl = 'https://onlyuno.xyz/copyrightsforhumans';
+document.getElementById('copyLink').addEventListener('click', async (e) => {
+try { await navigator.clipboard.writeText(shareUrl); e.target.textContent = 'Copied!'; }
+catch { e.target.textContent = shareUrl; }
+});
+document.getElementById('shareBtn').addEventListener('click', async () => {
+const text = 'I signed the Proclamation: copyrights belong to people, not the robots.';
+if (navigator.share) { try { await navigator.share({ title:'Copyrights for Humans', text, url: shareUrl }); } catch {} }
+else { window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(shareUrl)}`, '_blank'); }
+});
+</script>
+</body>
+</html>

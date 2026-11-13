@@ -1,0 +1,39 @@
+# The single authoritative signing service for both front ends.
+# Deploy:  cd worker && npx wrangler deploy
+# Migrate: npx wrangler d1 execute copyrights-for-humans --remote --file migrations/<file>.sql
+name = "copyrights-for-humans"
+main = "src/index.js"
+compatibility_date = "2026-10-15"
+workers_dev = false
+
+# *.html is imported as a Text module (wrangler default rule).
+
+routes = [
+  { pattern = "onlyuno.xyz/copyrightsforhumans*", zone_name = "onlyuno.xyz" },
+  { pattern = "rightsforhumansnotrobots.org/api/*", zone_name = "rightsforhumansnotrobots.org" },
+  { pattern = "rightsforhumansnotrobots.org/verify*", zone_name = "rightsforhumansnotrobots.org" },
+  { pattern = "rightsforhumansnotrobots.org/certificate*", zone_name = "rightsforhumansnotrobots.org" },
+  { pattern = "rightsforhumansnotrobots.org/unsubscribe*", zone_name = "rightsforhumansnotrobots.org" },
+  { pattern = "rightsforhumansnotrobots.org/admin/*", zone_name = "rightsforhumansnotrobots.org" },
+]
+
+[vars]
+FROM_EMAIL = "proclamation@onlyuno.xyz"
+NOTIFY_TO = "onlyuno@spinstream.xyz"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "copyrights-for-humans"
+database_id = "e99af927-e5b7-4bbc-8d4e-c2ff364687aa"
+migrations_dir = "migrations"
+
+[[send_email]]
+name = "EMAIL"
+
+[observability]
+enabled = true
+
+# Secrets (set with `wrangler secret put`, never committed):
+#   ADMIN_KEY          required for /admin/* and IP hashing salt
+#   TURNSTILE_SECRET   optional; enables server-side Turnstile check
+# Optional var: TURNSTILE_SITEKEY (legacy onlyuno page widget)

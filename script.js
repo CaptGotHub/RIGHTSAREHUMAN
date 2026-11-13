@@ -1,10 +1,12 @@
 /*
  * Rights for Humans, Not Robots
- * Signature collection is intentionally inactive until a verified backend
- * endpoint is configured. Never present a signature as saved without a
- * successful server response and email-confirmation workflow.
+ * Submissions go same-origin to the signing Worker (routed on this domain to
+ * the copyrights-for-humans Worker that also serves onlyuno.xyz). Nothing is
+ * counted until the person opens the emailed confirmation link. Never present
+ * a response as recorded without a successful server response.
  */
-const FORM_ENDPOINT = ""; // Configure only after the signing backend is ready.
+const FORM_ENDPOINT = "/api/sign";
+const COUNT_ENDPOINT = "/api/count";
 const SHARE_URL = "https://rightsforhumansnotrobots.org/";
 
 const form = document.getElementById("proclamation");
@@ -31,8 +33,6 @@ form.addEventListener("submit", async (event) => {
   data.public_name = data.publish_opinion ? data.name.trim() : "";
   data.public_position = data.publish_opinion ? data.stance : "";
 
-  data.signed_at = new Date().toISOString();
-  data.page = window.location.href;
 
   if (data.website) return;
   if (!data.stance) return fail("Please select For or Against.");
@@ -43,9 +43,7 @@ form.addEventListener("submit", async (event) => {
   if (data.opinion_text.length > 1000) return fail("Please keep your comments within 1,000 characters.");
   if (!data.human) return fail("Please confirm that you are not a robot.");
 
-  if (!FORM_ENDPOINT) {
-    return fail("PREVIEW ONLY: Nothing was recorded and no confirmation email was sent. Email confirmation and certificates will become available after the signing service is connected.");
-  }
+  if (!FORM_ENDPOINT) return fail("Signing is not available right now. Nothing was recorded.");
 
   signButton.disabled = true;
   signButton.textContent = "Sealing…";
@@ -55,13 +53,15 @@ form.addEventListener("submit", async (event) => {
       headers: { "Content-Type": "application/json", "Accept": "application/json" },
       body: JSON.stringify(data)
     });
-    if (!response.ok) throw new Error("Signature submission failed");
+    const out = await response.json().catch(() => ({}));
+    if (!response.ok || !out.ok) throw new Error(out.error || "We couldn't submit your response. Nothing was recorded. Please try again later.");
     document.getElementById("form-body").hidden = true;
+    document.getElementById("sentTo").textContent = data.email.trim();
     document.getElementById("thanksName").textContent = "Thank you, " + data.name.trim().split(/\s+/)[0];
     document.getElementById("success").classList.add("show");
     document.getElementById("success").scrollIntoView({ behavior: "smooth", block: "center" });
   } catch (error) {
-    fail("We couldn't submit your signature. Please try again later.");
+    fail(error && error.message && !/fetch|network/i.test(error.message) ? error.message : "We couldn't reach the signing service. Nothing was recorded. Please try again later.");
     signButton.disabled = false;
     signButton.innerHTML = "Record My<br>Position<span>✦ SEAL IT ✦</span>";
   }
@@ -97,3 +97,16 @@ document.getElementById("shareBtn").addEventListener("click", async () => {
     window.open(intent, "_blank", "noopener,noreferrer");
   }
 });
+
+async function loadCount() {
+  try {
+    const response = await fetch(COUNT_ENDPOINT, { headers: { "Accept": "application/json" } });
+    if (!response.ok) return;
+    const d = await response.json();
+    if (typeof d.movement !== "number" || d.total_responses < 1) return;
+    document.getElementById("t-for").textContent = d.movement.toLocaleString();
+    document.getElementById("t-against").textContent = d.against.toLocaleString();
+    document.getElementById("tally").hidden = false;
+  } catch { /* Count is optional. */ }
+}
+loadCount();

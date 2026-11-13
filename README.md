@@ -10,7 +10,8 @@ Static landing-page project for the Proclamation of Copyrights for Humans.
 
 - `index.html` — page structure and proclamation content
 - `styles.css` — parchment, typography, responsive layout and seal styling
-- `script.js` — client-side validation and share actions
+- `script.js` — client-side validation, same-origin submission to `/api/sign`, live count and share actions
+- `worker/` — the `copyrights-for-humans` Cloudflare Worker: the single signing, email-confirmation and certificate service for this site and onlyuno.xyz/copyrightsforhumans (see `ONLYUNO_SIGNING_INTEGRATION.md`)
 
 ## Cloudflare Pages
 
@@ -21,7 +22,7 @@ This repository is intended for a Cloudflare Pages deployment.
 - Build output directory: `/` (repository root)
 - Custom domain: `rightsforhumansnotrobots.org`
 
-The site is a static front end. Signature collection is deliberately **not active** yet: `FORM_ENDPOINT` in `script.js` is empty. Connect a backend that validates submissions, sends an email-confirmation link, prevents duplicate/unverified signatures from appearing in the public count, and protects email addresses before enabling the sign button's submission flow.
+The site is a static front end. Signing is handled by the Worker in `worker/`, routed on this domain for `/api/*`, `/verify*`, `/certificate*`, `/unsubscribe*` and `/admin/*`. Responses count only after email confirmation, and email addresses are never published. Deploy order and tests are in `ONLYUNO_SIGNING_INTEGRATION.md`.
 
 Do not put API keys, tokens, or private credentials in this repository or browser JavaScript.
 
