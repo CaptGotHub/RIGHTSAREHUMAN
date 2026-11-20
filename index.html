@@ -81,10 +81,12 @@
       <div class="outcome"><strong>After email confirmation:</strong> You will receive a named Proclamation Participation Certificate that states <em>For</em> or <em>Against</em> and lets you copy text, Markdown, or an HTML version. A separate sharing link will invite others to respond. Only verified For responses join the movement. Your email remains private. No AIN or NFARTIFACT is issued with this certificate. <a href="./certificate-preview.html">See a sample certificate</a>.</div>
     </div>
 
-    <div class="success" id="success" aria-live="polite">
-      <div class="stamp">Submission Received</div>
-      <p><strong id="thanksName">Thank you</strong>, your response was received.</p>
-      <p><strong>Next step: check your email.</strong> We sent a confirmation link to <strong id="sentTo">your inbox</strong> from proclamation@onlyuno.xyz. Your response is not counted until you open it. If you do not see it within a few minutes, check Spam or Junk. Opening the link takes you to your certificate and invitation link.</p>
+    <div class="success" id="success" aria-live="polite" tabindex="-1">
+      <div class="stamp">✓ SUBMISSION RECEIVED</div>
+      <div class="next-step-banner"><div class="next-step-icon" aria-hidden="true">✉</div><h2>CHECK YOUR EMAIL!</h2><p class="next-step-big">ONE MORE CLICK TO CONFIRM</p></div>
+      <p><strong id="thanksName">Thank you</strong> — your response reached the signing service.</p>
+      <p>Look for your confirmation link addressed to <strong id="sentTo">your inbox</strong> from <strong>proclamation@onlyuno.xyz</strong>.</p>
+      <p><strong>Your response will not count until you open that email and click the confirmation link.</strong> If it is missing, check Spam or Junk. After confirming, you can open your certificate and invitation link.</p>
       <div class="share"><button type="button" id="copyLink">Copy link to share</button><button type="button" id="shareBtn">Share</button></div>
     </div>
   </form>
