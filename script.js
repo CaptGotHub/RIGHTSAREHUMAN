@@ -46,7 +46,8 @@ form.addEventListener("submit", async (event) => {
   if (!FORM_ENDPOINT) return fail("Signing is not available right now. Nothing was recorded.");
 
   signButton.disabled = true;
-  signButton.textContent = "Sealing…";
+  signButton.setAttribute("aria-busy", "true");
+  signButton.textContent = "Sending…";
   try {
     const response = await fetch(FORM_ENDPOINT, {
       method: "POST",
@@ -60,9 +61,11 @@ form.addEventListener("submit", async (event) => {
     document.getElementById("thanksName").textContent = "Thank you, " + data.name.trim().split(/\s+/)[0];
     document.getElementById("success").classList.add("show");
     document.getElementById("success").scrollIntoView({ behavior: "smooth", block: "center" });
+    document.getElementById("success").focus({ preventScroll: true });
   } catch (error) {
     fail(error && error.message && !/fetch|network/i.test(error.message) ? error.message : "We couldn't reach the signing service. Nothing was recorded. Please try again later.");
     signButton.disabled = false;
+    signButton.removeAttribute("aria-busy");
     signButton.innerHTML = "Record My<br>Position<span>✦ SEAL IT ✦</span>";
   }
 });
