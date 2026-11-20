@@ -47,3 +47,17 @@ footer{max-width:760px;margin:22px auto 0;text-align:center;color:#a8957a;font-f
 .credit-label,.credit-role{font:11px/1.5 Inter,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-soft)}
 .credit-name{font-size:24px;margin:5px 0}.abstain{font-size:14px;color:var(--ink-soft);font-style:italic;max-width:290px}
 .tally{text-align:center;font:13px/1.5 Inter,sans-serif;color:var(--ink-soft);margin:-6px 0 16px}.tally b{color:var(--seal);font-weight:600}
+
+/* Clear signing feedback without changing the proclamation's visual identity */
+.sign-wrap{margin-top:18px}
+button.sign{width:174px;height:174px;font-size:24px;outline:5px solid rgba(155,28,28,.17);outline-offset:6px}
+button.sign:focus-visible{outline:5px solid #61350d;outline-offset:7px}
+button.sign:disabled{cursor:wait;opacity:1;filter:saturate(.75)}
+.success.show{padding:22px 12px 26px}
+.success .stamp{font-size:clamp(25px,5vw,36px);border-width:5px;font-weight:700}
+.next-step-banner{background:#791515;color:#fff5df;border:4px double #e7c28b;border-radius:9px;padding:23px 14px;margin:12px auto 23px;box-shadow:0 9px 24px rgba(65,10,10,.28)}
+.next-step-icon{font-size:42px;line-height:1.1;display:block;margin-bottom:5px}
+.next-step-banner h2{font:700 clamp(30px,6vw,47px)/1.08 'IM Fell English SC',Georgia,serif;margin:0;color:#fff6e5}
+.next-step-banner .next-step-big{font:800 clamp(15px,3vw,20px)/1.5 Inter,Arial,sans-serif;letter-spacing:.07em;margin:10px 0 0;color:#ffe0a7}
+.success p{line-height:1.55}
+@media(prefers-reduced-motion:reduce){.success .stamp{animation:none;transform:rotate(-5deg)}}
